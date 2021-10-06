@@ -8,6 +8,7 @@
 		- Backgrounds
 		- Glyphs
 		- Courses Form
+	3. Loader
 */
 
 /*** 1. GLOBAL ***/
@@ -208,4 +209,24 @@ li a:hover, li a:focus {
 	background-color: var(--color-primary) !important;
 	color: var(--color-white);
 	opacity: .7;
+}
+
+/*** 3. LOADER ***/
+
+/* Loader
+   ============================= */
+
+.loader {
+    border: 10px solid #f3f3f3;
+    border-top: 10px solid #C271FF;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 2s linear infinite;
+    margin: auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

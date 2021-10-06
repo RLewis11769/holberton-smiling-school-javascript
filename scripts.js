@@ -34,7 +34,7 @@ let responsiveCarousel = {
 };
 
 let singleCarousel = {
-	autoplay: false,
+	autoplay: true,
 	infinite: true,
 	arrows: true,
 	prevArrow: `<img class="a-left control-c slick-prev"src="images/arrow_white_left.png" aria-hidden="true" alt="next">
@@ -43,9 +43,39 @@ let singleCarousel = {
 		<span class="sr-only">Previous</span>`
 }
 
+function addQuote(data) {
+	$('.quotes').prepend(`<div>
+		<div class="row align-items-center justify-content-center">
+			<div class="col-md-4 text-center">
+				<img class="rounded-circle m-5 w-50" src="${data['pic_url']}" alt="">
+			</div>
+			<div class="col-md-5">
+				<div class="card-body">
+					<h1 class="lead">${data.text}</h1>
+					<p>
+						<span class="font-weight-bold">${data.name}</span>
+						<br><span class="font-italic">${data.title}</span>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>`);
+}
+
+function loadTestimonials() {
+	url = 'https://smileschool-api.hbtn.info/quotes';
+	$.get(url, function (data) {
+		data.forEach(addQuote);
+		$('.quotes').slick(singleCarousel);
+	}).fail(function () {
+		console.log('uh oh');
+	})
+}
+
 $(document).ready(function () {
 	$('#popular').slick(responsiveCarousel);
 	$('#latest').slick(responsiveCarousel);
-	$('.quotes').slick(singleCarousel);
+
+	loadTestimonials();
 	console.log('done')
 });

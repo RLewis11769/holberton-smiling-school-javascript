@@ -13,8 +13,8 @@
 		rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Coiny&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-	<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
-		integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
 		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
 		crossorigin="anonymous"></script>
@@ -139,55 +139,40 @@
 	<main id="a11y-main-content" tabindex="-1">
 		<!-- Purple Testimonial Carousel -->
 		<section class="container-fluid purple-bg">
-			<div class="container-lg">
-				<div id="carousel-picture-controls" class="carousel slide" data-ride="carousel">
-					<div class="carousel-inner text-white">
-						<div class="carousel-item active">
-							<div class="row align-items-center justify-content-center">
-								<div class="col-md-4 text-center">
-									<img class="rounded-circle m-5 w-50" src="images/profile_5.jpg" alt="">
-								</div>
-								<div class="col-md-5">
-									<div class="card-body">
-										<h1 class="lead">« Those tutorials are concise and go straight to the point. I
-											can’t think of a better place to learn smiling. And it’s so fun!</h1>
-										<p>
-											<span class="font-weight-bold">Person Name</span>
-											<br><span class="font-italic">weather presenter</span>
-										</p>
-									</div>
-								</div>
-							</div>
+			<div class="container-lg single quotes">
+				<div>
+					<div class="row align-items-center justify-content-center">
+						<div class="col-md-4 text-center">
+							<img class="rounded-circle m-5 w-50" src="images/profile_5.jpg" alt="">
 						</div>
-						<div class="carousel-item">
-							<div class="row align-items-center justify-content-center">
-								<div class="col-md-4 text-center">
-									<img class="rounded-circle m-5 w-50" src="images/profile_5.jpg" alt="">
-								</div>
-								<div class="col-md-5">
-									<div class="card-body">
-										<h1 class="lead">« Those tutorials are concise and go straight to the point. I
-											can’t think of a better place to learn smiling. And it’s so fun!</h1>
-										<p>
-											<span class="font-weight-bold">Person Name</span>
-											<br><span class="font-italic">weather presenter</span>
-										</p>
-									</div>
-								</div>
+						<div class="col-md-5">
+							<div class="card-body">
+								<h1 class="lead">« Those tutorials are concise and go straight to the point. I
+									can’t think of a better place to learn smiling. And it’s so fun!</h1>
+								<p>
+									<span class="font-weight-bold">Person Name</span>
+									<br><span class="font-italic">weather presenter</span>
+								</p>
 							</div>
 						</div>
 					</div>
-					<!-- Left and right controls for testimonial section -->
-					<a class="carousel-control-prev mt-5" href="#carousel-picture-controls" role="button"
-						data-slide="prev">
-						<img src="images/arrow_white_left.png" aria-hidden="true" alt="previous">
-						<span class="sr-only">Previous</span>
-					</a>
-					<a class="carousel-control-next mt-5" href="#carousel-picture-controls" role="button"
-						data-slide="next">
-						<img src="images/arrow_white_right.png" aria-hidden="true" alt="next">
-						<span class="sr-only">Next</span>
-					</a>
+				</div>
+				<div>
+					<div class="row align-items-center justify-content-center">
+						<div class="col-md-4 text-center">
+							<img class="rounded-circle m-5 w-50" src="images/profile_5.jpg" alt="">
+						</div>
+						<div class="col-md-5">
+							<div class="card-body">
+								<h1 class="lead">« Those tutorials are concise and go straight to the point. I
+									can’t think of a better place to learn smiling. And it’s so fun!</h1>
+								<p>
+									<span class="font-weight-bold">Person Name</span>
+									<br><span class="font-italic">weather presenter</span>
+								</p>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -196,7 +181,7 @@
 		<section class="text-dark container-fluid mb-5">
 			<h1 class="text-center font-weight-light my-5 py-5">Most <span
 					class="font-weight-bold purple">popular</span> tutorials</h1>
-			<div class="container responsive">
+			<div class="container" id="popular">
 				<div class="mx-2">
 					<img class="card-img-top" src="images/thumbnail_4.jpg" alt="">
 					<div class="card-body">
@@ -358,7 +343,7 @@
 		<section class="text-dark container-fluid">
 			<h1 class="text-center font-weight-light my-5 py-5"><span class="font-weight-bold purple">Latest</span>
 				tutorials</h1>
-			<div class="container responsive">
+			<div class="container pb-5" id="latest">
 				<div class="mx-2">
 					<img class="card-img-top" src="images/thumbnail_4.jpg" alt="">
 					<div class="card-body">

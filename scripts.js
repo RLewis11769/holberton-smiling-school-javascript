@@ -33,6 +33,19 @@ let responsiveCarousel = {
 	]
 };
 
+let singleCarousel = {
+	autoplay: false,
+	infinite: true,
+	arrows: true,
+	prevArrow: `<img class="a-left control-c slick-prev"src="images/arrow_white_left.png" aria-hidden="true" alt="next">
+		<span class="sr-only">Previous</span>`,
+	nextArrow: `<img class="a-left control-c slick-next" src="images/arrow_white_right.png" aria-hidden="true" alt="next">
+		<span class="sr-only">Previous</span>`
+}
+
 $(document).ready(function () {
-	$('.responsive').slick(responsiveCarousel);
+	$('#popular').slick(responsiveCarousel);
+	$('#latest').slick(responsiveCarousel);
+	$('.quotes').slick(singleCarousel);
+	console.log('done')
 });

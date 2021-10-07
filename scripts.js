@@ -122,7 +122,6 @@ function includeStars (data, id) {
 
 function displayLoading(loading, tag) {
 	// Adds spinner to indicate loading while API is working
-	$(tag).empty();
 	if (loading) {
 		$(tag).wrap('<div class="loader"></div>');
 	} else {

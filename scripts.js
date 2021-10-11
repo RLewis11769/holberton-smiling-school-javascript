@@ -45,9 +45,9 @@ function loadTestimonials() {
 	$.ajax({
 		type: 'GET',
 		url: 'https://smileschool-api.hbtn.info/quotes',
-		success: (data)=> (data.forEach(addTestimonial)),
-		error: (()=> console.log('Unable to load data')),
-		complete: (()=> $('.quotes').slick(singleCarousel))
+		success: (data) => (data.forEach(addTestimonial)),
+		error: (() => console.log('Unable to load data')),
+		complete: (() => $('.quotes').slick(singleCarousel))
 	});
 	displayLoading(0, '.quotes');
 }
@@ -78,20 +78,20 @@ function loadTutorials(url, id) {
 	$.ajax({
 		type: 'GET',
 		url: url,
-		success: (videos)=> {
+		success: (videos) => {
 			// for each tutorial, add html data and then add rating stars
 			for (let video of videos) {
 				addTutorial(video, id);
 				includeStars(video, id);
 			}
 		},
-		error: (()=> console.log('Unable to load data')),
-		complete: (()=> $(`#${id}`).slick(responsiveCarousel))
+		error: (() => console.log('Unable to load data')),
+		complete: (() => $(`#${id}`).slick(responsiveCarousel))
 	});
 	displayLoading(0, `.${id}`);
 }
 
-function addTutorial (data, id) {
+function addTutorial(data, id) {
 	// Add html to #popular or #latest div including dynamic data
 	$(`#${id}`).prepend(`<div class="mx-2" id="${id}${data.id}">
 			<img class="card-img-top" src="${data["thumb_url"]}" alt="">
@@ -110,7 +110,7 @@ function addTutorial (data, id) {
 		</div>`);
 }
 
-function includeStars (data, id) {
+function includeStars(data, id) {
 	// Add star rating to video tutorials
 	for (let on = 0; on < data.star; on++) {
 		$(`#${id} #star${data.id}`).append('<img src="images/star_on.png" height="25px" width="25px" alt="">');
@@ -129,10 +129,107 @@ function displayLoading(loading, tag) {
 	}
 }
 
+function addFormData(data) {
+	// Add html to .form div including dynamic data
+	$('#form').append(`<div class="col my-3" id="form${data.id}">
+		<img class="card-img-top" src="${data["thumb_url"]}" alt="">
+		<div class="card-body">
+			<h1 class="card-title lead font-weight-bold text-dark">${data.title}</h1>
+			<p class="card-text text-secondary">${data["sub-title"]}</p>
+			<div class="row">
+				<img class="rounded-circle ml-3" src="${data["author_pic_url"]}" height="25px" width="25px" alt="">
+				<p class="ml-3 purple">${data.author}</p>
+			</div>
+			<div class="row align-items-center justify-content-between px-4">
+				<div class="row" id="star${data.id}"></div>
+				<p class="purple ml-2 pt-3">${data.duration}</p>
+			</div>
+			</div>
+		</div>
+	</div>`);
+}
+
+function sortFormData(videos, search) {
+	// Sort by "most popular"
+	if (search === '1') {
+		videos.sort((a, b)=> b.star - a.star)
+	// Sort by "most recent"
+	} else if (search === '2') {
+		videos.sort((a, b)=> b.published_at - a.published_at)
+	// Sort by "most viewed"
+	} else {
+		videos.sort((a, b)=> b.views - a.views)
+	}
+
+	// For each video, send data to showData and includeStars
+	for (let video of videos) {
+		addFormData(video);
+		includeStars(video, `form${video.id}`);
+	}
+}
+
+function compareFormData(search) {
+	let videos = [];
+	displayLoading(1, `#form`);
+	// Compares data in search to data in api
+	$.ajax({
+		type: 'GET',
+		url: 'https://smileschool-api.hbtn.info/courses',
+		success: (allVideos) => {
+			for (let video of allVideos.courses) {
+				// Put all keywords into new array as lowercase
+				const arr = video.keywords.map(v => v.toLowerCase());
+				// Matching search term and "all" topics
+				if ((arr.includes(search.search) || (search.search == '')) && (search.topic === '1')) {
+					videos.push(video);
+					// Matching search term and specified topic
+				} else if ((arr.includes(search.search) || (search.search == '')) && (search.topic === video.topic)) {
+					videos.push(video);
+				}
+			}
+			// Sort data by search term and add to DOM in order
+			sortFormData(videos, search.sort);
+			// Find total number of items in search to add on complete
+			num = videos.length;
+		},
+		error: (() => console.log('Unable to load data')),
+		complete: (() => $('#number').html(`${num} videos`))
+	})
+	displayLoading(0, `#form`);
+}
+
+function getFormData() {
+	// On click of search button, gather data and send to parsing function
+	$('.magnify').click(() => {
+		// Clear existing data
+		$('#form').empty();
+
+		// Save current data in object
+		const search_terms = {
+			"search": $('#search').val().toLowerCase(),
+			"topic": $('#topic').find(':selected').attr('value'),
+			"sort": $('#sort').find(':selected').attr('value')
+		}
+		compareFormData(search_terms);
+	});
+
+	// If user presses "enter" in input field, same as button click and will trigger search
+	$('#search').keypress(function (e) {
+		if (e.which === 13) {
+			$('.magnify').click();
+		}
+	});
+
+	// Any changes to dropdowns will also trigger search
+	$('#sort').change(() => $('.magnify').click());
+	$('#topic').change(() => $('.magnify').click());
+}
+
 $(document).ready(function () {
 	displayLoading(1, 'body');
 	loadTestimonials();
 	loadTutorials('https://smileschool-api.hbtn.info/popular-tutorials', 'popular');
 	loadTutorials('https://smileschool-api.hbtn.info/latest-videos', 'latest');
+	getFormData();
 	displayLoading(0, 'body');
 });

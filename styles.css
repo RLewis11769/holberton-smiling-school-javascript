@@ -7,7 +7,6 @@
 		- Colors
 		- Backgrounds
 		- Glyphs
-		- Courses Form
 	3. Loader
 */
 
@@ -92,6 +91,18 @@ li a:hover, li a:focus {
 	margin-left: auto;
 	margin-right: auto;
 	background-color: var(--color-white);
+}
+
+/* Courses Form */
+
+.search {
+	outline: 0;
+	opacity: .7;
+	color: var(--color-white);
+}
+
+::placeholder {
+	color: var(--color-white);
 }
 
 /*** 2. LAYOUT ***/
@@ -185,48 +196,22 @@ li a:hover, li a:focus {
 	color: var(--color-dark);
 }
 
-/* Courses Form
-   ============================= */
-
-/* Search */
-
-.search {
-	outline: 0;
-	opacity: .7;
-}
-
-::placeholder {
-	color: white;
-}
-
-/* Dropdown */
-
-.dropdown {
-	background-color: var(--color-white);
-}
-
-.dropdown .btn {
-	background-color: var(--color-primary) !important;
-	color: var(--color-white);
-	opacity: .7;
-}
-
 /*** 3. LOADER ***/
 
 /* Loader
    ============================= */
 
 .loader {
-    border: 10px solid #f3f3f3;
-    border-top: 10px solid #C271FF;
-    border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    animation: spin 2s linear infinite;
-    margin: auto;
+	border: 10px solid #f3f3f3;
+	border-top: 10px solid #C271FF;
+	border-radius: 50%;
+	width: 80px;
+	height: 80px;
+	animation: spin 2s linear infinite;
+	margin: auto;
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
 }

@@ -1,14 +1,23 @@
 /* NAVIGATION
-	1. Configuration
-	2. DOM Manipulation
+	1. Function Calls
+	2. Configuration
+	3. DOM Manipulation
 		- Testimonials
 		- Tutorials
 		- Form
 		- Shared
-	3. Function Calls
 */
 
-/*** 1. CONFIGURATION ***/
+/*** 1. FUNCTION CALLS ***/
+
+   $(document).ready(function () {
+	loadTestimonials();
+	loadTutorials('https://smileschool-api.hbtn.info/popular-tutorials', 'popular');
+	loadTutorials('https://smileschool-api.hbtn.info/latest-videos', 'latest');
+	getFormData();
+});
+
+/*** 2. CONFIGURATION ***/
 
 let responsiveCarousel = {
 	autoplay: true,
@@ -51,22 +60,26 @@ let singleCarousel = {
 	nextArrow: `<img class="a-right control-c slick-next" src="images/arrow_white_right.png" aria-hidden="true" alt="next">`
 }
 
-/*** 1. DOM MANIPULATION ***/
+/*** 3. DOM MANIPULATION ***/
 
 /* Testimonials
    ============================= */
 
 function loadTestimonials() {
 	// Query for data for testimonials section (single-item carousel found in multiple places)
-	displayLoading(1, '.quotes');
 	$.ajax({
 		type: 'GET',
 		url: 'https://smileschool-api.hbtn.info/quotes',
+		// Before - show loader
+		beforeSend: (()=> displayLoading(1, '.quotes')),
 		success: (data) => (data.forEach(addTestimonial)),
 		error: (() => console.log('Unable to load data')),
-		complete: (() => $('.quotes').slick(singleCarousel))
+		// After - Slick carousel and stop showing loader
+		complete: (() => {
+			$('.quotes').slick(singleCarousel);
+			displayLoading(0, '.quotes');
+		})
 	});
-	displayLoading(0, '.quotes');
 }
 
 function addTestimonial(data) {
@@ -94,10 +107,11 @@ function addTestimonial(data) {
 
 function loadTutorials(url, id) {
 	// Query for data for popular or latest tutorials video section (multi-item carousel)
-	displayLoading(1, `.${id}`);
 	$.ajax({
 		type: 'GET',
 		url: url,
+		// Before - show carousel
+		beforeSend: (()=> displayLoading(1, `.${id}`)),
 		success: (videos) => {
 			// for each tutorial, add html data and then add rating stars
 			for (let video of videos) {
@@ -106,9 +120,12 @@ function loadTutorials(url, id) {
 			}
 		},
 		error: (() => console.log('Unable to load data')),
-		complete: (() => $(`#${id}`).slick(responsiveCarousel))
+		// After - Slick carousel and stop showing loader
+		complete: (() => {
+			$(`#${id}`).slick(responsiveCarousel);
+			displayLoading(0, `.${id}`);
+		})
 	});
-	displayLoading(0, `.${id}`);
 }
 
 function addTutorial(data, id) {
@@ -163,10 +180,11 @@ function getFormData() {
 function compareFormData(search) {
 	// Compares data in search to data in api
 	let videos = [];
-	displayLoading(1, `#form`);
 	$.ajax({
 		type: 'GET',
 		url: 'https://smileschool-api.hbtn.info/courses',
+		// Before - show carousel
+		beforeSend: (()=> displayLoading(1, '#form')),
 		success: (allVideos) => {
 			for (let video of allVideos.courses) {
 				// Put all keywords into new array as lowercase
@@ -185,9 +203,12 @@ function compareFormData(search) {
 			num = videos.length;
 		},
 		error: (() => console.log('Unable to load data')),
-		complete: (() => $('#number').html(`${num} videos`))
+		// After - Add number of videos and stop showing loader
+		complete: (() => {
+			$('#number').html(`${num} videos`);
+			displayLoading(0, '#form');
+		})
 	})
-	displayLoading(0, `#form`);
 }
 
 function sortFormData(videos, search) {
@@ -250,15 +271,3 @@ function displayLoading(loading, tag) {
 		$(tag).unwrap();
 	}
 }
-
-/* Function Calls
-   ============================= */
-
-$(document).ready(function () {
-	displayLoading(1, 'body');
-	loadTestimonials();
-	loadTutorials('https://smileschool-api.hbtn.info/popular-tutorials', 'popular');
-	loadTutorials('https://smileschool-api.hbtn.info/latest-videos', 'latest');
-	getFormData();
-	displayLoading(0, 'body');
-});

@@ -11,11 +11,11 @@ Content on the page should be dynamically loaded from the SmileSchool API found 
 
 ## Examples
 
-The example for the first (single-item) carousel on the homepage and the carousel on the pricing page is found [here].
+The example for the first (single-item) carousel on the homepage and the carousel on the pricing page is found [here](https://github.com/RLewis11769/holberton-smiling-school-javascript/blob/main/usage/QuoteCarousel.gif).
 
-The example for the second and third (multi-item) carousels on the homepage is found [here].
+The example for the second and third (multi-item) carousels on the homepage is found [here](https://github.com/RLewis11769/holberton-smiling-school-javascript/blob/main/usage/TutorialsCarousel.gif).
 
-The example for the search bar on the courses page is found [here].
+The example for the search bar on the courses page is found [here](https://github.com/RLewis11769/holberton-smiling-school-javascript/blob/main/usage/Searchbar.gif).
 
 ## Installation
 
@@ -37,33 +37,66 @@ Holberton SmilingSchool - JavaScript is now ready to view. See below for details
 
 ## Structure
 
-### CSS
+### Static Content
 
-#### Custom Styling
+#### CSS
 
 - All pages use the same CSS file that contains as little CSS as possible
 	- File:
 		- styles.css
 
-### Static Content
-
 #### Bootstrap Design
 
-- All pages are originally filled with static content based on the "Implement a Design in Bootstrap" project that took place from 9/14 to 9/21 located [here](https://github.com/RLewis11769/holberton-smiling-school)
-	Files:
+- All pages are originally filled with static content based on the "Implement a Design in Bootstrap" project that took place from 9/14 to 9/21 located [here](https://github.com/RLewis11769/holberton-smiling-school).
+	- Files:
 		- 0-homepage.html
 		- 0-pricing.html
 		- 0-courses.html
 
-### JavaScript
+### Dynamic Content
+
+#### JavaScript (jQuery)
 
 - All pages used the same JavaScript file that executes when the document is fully loaded
 	File:
 		- scripts.js
 
 #### Updated Homepage
+
+0. Update the homepage quotes carousel
+- Replace static quotes by dynamically loading data from https://smileschool-api.hbtn.info/quotes
+- Add a loader during the Ajax request
+	- File:
+		- 1-homepage.html
+
+1. Update the homepage popular tutorials carousel
+- Replace static tutorials by dynamically loading data from https://smileschool-api.hbtn.info/popular-tutorials
+- Add a loader during the Ajax request
+	- File:
+		- 2-homepage.html
+
+2. Update the homepage latest videos carousel
+- Replace static tutorials by dynamically loading data from https://smileschool-api.hbtn.info/latest-videos
+- Add a loader during the Ajax request
+	- File:
+		- homepage.html
+
 #### Updated Pricing Page
+
+0. Update the pricing page quotes carousel
+- Replace static quotes by dynamically loading data from https://smileschool-api.hbtn.info/quotes
+- Add a loader during the Ajax request
+	- File:
+		- pricing.html
+
 #### Updated Courses Page
+
+0. Update the courses page video search
+- Replace static search output by dynamically loading data from https://smileschool-api.hbtn.info/courses
+- Create dynamic search with sorting based on "search" value, "topic", and "sort by" fields
+- Add a loader during the Ajax request
+	- File:
+		- courses.html
 
 ## Project Rules
 
@@ -74,7 +107,22 @@ Holberton SmilingSchool - JavaScript is now ready to view. See below for details
 - Your JavaScript must be executed only when the document is loaded.
 
 ## Features
+
+- Generic and easily-changeable content
+- Decently accessible
+- Working multi-item carousel (using [slick carousel](https://kenwheeler.github.io/slick/) plugin)
+- No static content present in dynamic sections
+- Loader is briefly visible if change Network to "Slow 3G"
+- Search initialized by:
+	- Click on magnifying glass
+	- Pressing "enter" while in "keywords" input field
+	- New topic selected
+	- New sort selected
+
 ## Bugs
+
+- Loader should be visible during click on "next" arrow on carousels but couldn't get it working and included "infinite" loop instead
+- Latest tutorials only has 4 cards so arrows are not visible on desktop when exactly 4 are displayed (due to Slick carousel)
 
 ## Credit
 

@@ -3,19 +3,42 @@
 
 ## Description
 
-This project adds JavaScript, primarily through jQuery, to the previous Bootstrap project found [here](https://github.com/RLewis11769/holberton-smiling-school). 
+This project adds JavaScript, primarily through jQuery, to the previous Bootstrap project found [here](https://github.com/RLewis11769/holberton-smiling-school).
 
-This project duplicates the full front-end design of a fully functional website. The static content can be seen as 3 separate Figma designer files found [here](https://www.figma.com/file/QYQqMYbdpAHL5xTclwJKSI/Homepage?node-id=0%3A1), [here](https://www.figma.com/file/KLAI53jdYpfFNEy0O79ymB/Pricing?node-id=0%3A1), and [here](https://www.figma.com/file/ivg3abH1HLmMayBgjGg1Qf/Courses?node-id=0%3A1).
+This project duplicates the full dynamic front-end design of a fully functional website. The static content can be seen as 3 separate Figma designer files found [here](https://www.figma.com/file/QYQqMYbdpAHL5xTclwJKSI/Homepage?node-id=0%3A1), [here](https://www.figma.com/file/KLAI53jdYpfFNEy0O79ymB/Pricing?node-id=0%3A1), and [here](https://www.figma.com/file/ivg3abH1HLmMayBgjGg1Qf/Courses?node-id=0%3A1).
 
-Content on the page should be dynamically loaded from the SmileSchool API found [here](https://smileschool-api.hbtn.info).
+Content on the page is dynamically loaded from the SmileSchool API found [here](https://smileschool-api.hbtn.info).
+
+The [project_docs/](https://github.com/RLewis11769/holberton-smiling-school-javascript/tree/main/project_docs) folder contains all documentation describing my goals, results, and thoughts on the project. Check out an overview of the final project including screenshots and my review [here](https://github.com/RLewis11769/holberton-smiling-school-javascript/blob/main/project_docs/review.md). This was a school project with a specific structure. I've outlined it [here](https://github.com/RLewis11769/holberton-smiling-school-javascript/blob/main/project_docs/project_structure.md)here. Any of [homepage.html](https://github.com/RLewis11769/holberton-smiling-school-javascript/blob/main/homepage.html), [pricing.html](https://github.com/RLewis11769/holberton-smiling-school-javascript/blob/main/pricing.html), [courses.html](https://github.com/RLewis11769/holberton-smiling-school-javascript/blob/main/courses.html) would work as an entry point for the project, as all are connected via clickable links in the header.
+
+## README Navigation
+
+- [Description](#description)
+- [Navigation](#navigation)
+- [Examples](#examples)
+- [Installation](#installation)
+- [Project Rules](#project-rules)
+- [Features](#features)
+- [Bugs](#bugs)
+- [Credit](#credit)
 
 ## Examples
 
-The example for the first (single-item) carousel on the homepage and the carousel on the pricing page is found [here](https://github.com/RLewis11769/holberton-smiling-school-javascript/blob/main/usage/QuoteCarousel.gif).
+Full desktop/tablet, and mobile examples are shown here:
 
-The example for the second and third (multi-item) carousels on the homepage is found [here](https://github.com/RLewis11769/holberton-smiling-school-javascript/blob/main/usage/TutorialsCarousel.gif).
+![All](https://github.com/RLewis11769/holberton-smiling-school-javascript/blob/main/project_docs/AllExamples.jpg)
 
-The example for the search bar on the courses page is found [here](https://github.com/RLewis11769/holberton-smiling-school-javascript/blob/main/usage/Searchbar.gif).
+The example for the first (single-item) carousel on the homepage and the carousel on the pricing page at full width:
+
+![QuoteCarousel](https://github.com/RLewis11769/holberton-smiling-school-javascript/blob/main/project_docs/QuoteCarousel.gif).
+
+The example for the second and third (multi-item) carousels on the homepage:
+
+![TutorialsCarousel](https://github.com/RLewis11769/holberton-smiling-school-javascript/blob/main/project_docs/TutorialsCarousel.gif)
+
+The example for the search bar on the courses page:
+
+![Searchbar](https://github.com/RLewis11769/holberton-smiling-school-javascript/blob/main/project_docs/Searchbar.gif)
 
 ## Installation
 
@@ -29,74 +52,11 @@ git@github.com:RLewis11769/holberton-smiling-school-javascript.git
 
 ### 2. Open
 
-Install "Live Server" or another server preview extension, run it, and navigate to the open port.
+Choose an HTML file. I recommend [homepage.html](https://github.com/RLewis11769/holberton-smiling-school-javascript/blob/main/homepage.html)! Install "Live Server" or another server preview extension, run it, and navigate to the open port.
 
 ### 3. View
 
-Holberton SmilingSchool - JavaScript is now ready to view. See below for details.
-
-## Structure
-
-### Static Content
-
-#### CSS
-
-- All pages use the same CSS file that contains as little CSS as possible
-	- File:
-		- styles.css
-
-#### Bootstrap Design
-
-- All pages are originally filled with static content based on the "Implement a Design in Bootstrap" project that took place from 9/14 to 9/21 located [here](https://github.com/RLewis11769/holberton-smiling-school).
-	- Files:
-		- 0-homepage.html
-		- 0-pricing.html
-		- 0-courses.html
-
-### Dynamic Content
-
-#### JavaScript (jQuery)
-
-- All pages used the same JavaScript file that executes when the document is fully loaded
-	File:
-		- scripts.js
-
-#### Updated Homepage
-
-0. Update the homepage quotes carousel
-- Replace static quotes by dynamically loading data from https://smileschool-api.hbtn.info/quotes
-- Add a loader during the Ajax request
-	- File:
-		- 1-homepage.html
-
-1. Update the homepage popular tutorials carousel
-- Replace static tutorials by dynamically loading data from https://smileschool-api.hbtn.info/popular-tutorials
-- Add a loader during the Ajax request
-	- File:
-		- 2-homepage.html
-
-2. Update the homepage latest videos carousel
-- Replace static tutorials by dynamically loading data from https://smileschool-api.hbtn.info/latest-videos
-- Add a loader during the Ajax request
-	- File:
-		- homepage.html
-
-#### Updated Pricing Page
-
-0. Update the pricing page quotes carousel
-- Replace static quotes by dynamically loading data from https://smileschool-api.hbtn.info/quotes
-- Add a loader during the Ajax request
-	- File:
-		- pricing.html
-
-#### Updated Courses Page
-
-0. Update the courses page video search
-- Replace static search output by dynamically loading data from https://smileschool-api.hbtn.info/courses
-- Create dynamic search with sorting based on "search" value, "topic", and "sort by" fields
-- Add a loader during the Ajax request
-	- File:
-		- courses.html
+"Holberton SmilingSchool - JavaScript" is now ready to view!
 
 ## Project Rules
 
@@ -108,8 +68,8 @@ Holberton SmilingSchool - JavaScript is now ready to view. See below for details
 
 ## Features
 
-- Generic and easily-changeable content
-- Decently accessible
+- Reusable and easily-changeable content
+- Decently accessible as defined by [axe Dev Tools](https://www.deque.com/axe/devtools/)
 - Working multi-item carousel (using [slick carousel](https://kenwheeler.github.io/slick/) plugin)
 - No static content present in dynamic sections
 - Loader is briefly visible if change Network to "Slow 3G"
@@ -126,4 +86,4 @@ Holberton SmilingSchool - JavaScript is now ready to view. See below for details
 
 ## Credit
 
-This webpage static design was designed by Nicolas Philippot, UI/UX designer. This HTML/Bootstrap/JavaScript replica was implemented by Rachel Lewis.
+This webpage was designed by [Nicolas Philippot](https://dribbble.com/upmitt), UI/UX designer. This HTML/CSS replica was implemented by [Rachel Lewis](https://github.com/RLewis11769).
